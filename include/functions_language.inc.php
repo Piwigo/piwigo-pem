@@ -40,7 +40,7 @@ function get_current_language()
   
   if (empty($language) or !is_array($language))
   {
-    $language = $user['language'];
+    $language = @$interface_languages[ [$user['language']]];
 
     $get_browser_language = conf_get_param('get_browser_language',true);
     
@@ -56,6 +56,15 @@ function get_current_language()
         }
       }
     }
+  }
+
+  // we needed the name and ID for tha language, in an array
+  // However we weren't getting that before. At some point we were sending a sting but we required an array.
+  // This next step forces an array if need be
+
+  if (empty($language))
+  {
+    $language = $interface_languages['en_UK'];
   }
 
   return $language;
