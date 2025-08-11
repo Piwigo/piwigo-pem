@@ -325,3 +325,4 @@ $lang['No links are available for this extension.'] = '此扩展无可用链接'
 $lang['Piwigo team'] = 'Piwigo团队';
 $lang['Read less'] = '收起';
 $lang['Read more ...'] = '展开更多...';
+$lang['This action cannot be performed at this time. Please contact an admin.'] = '当前无法执行此操作，请联系管理员。';
