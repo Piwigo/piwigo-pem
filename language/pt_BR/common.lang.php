@@ -322,3 +322,4 @@ $lang['Piwigo team'] = 'Equipe Piwigo';
 $lang['No links are available for this extension.'] = 'Não há links disponíveis para esta extensão.';
 $lang['Create extension'] = 'Criar extensão';
 $lang['Add revision'] = 'Adicionar revisão';
+$lang['This action cannot be performed at this time. Please contact an admin.'] = 'Esta ação não pode ser realizada neste momento. Entre em contato com um administrador.';
