@@ -35,6 +35,9 @@
 
     {* Footer CSS *}
     <link rel="stylesheet" type="text/css" href="{$PEM_ROOT_URL_PLUGINS}styles/css/footer.css">
+
+    {* Plausible *}
+    <script defer data-domain="piwigo.org" src="https://plausible.piwigo.org/js/script.js"></script>
     
   </head>
   <body>
