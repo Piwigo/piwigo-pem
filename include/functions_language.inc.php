@@ -29,9 +29,9 @@ function get_current_language()
   
   $interface_languages = get_interface_languages();
   
-  if (isset($_GET['lang']))
+  if (isset($user['language']))
   {
-    $language = @$interface_languages[$_GET['lang']];
+    $language = @$interface_languages[$user['language']];
   }
   else if (isset($_SESSION['language']))
   {
