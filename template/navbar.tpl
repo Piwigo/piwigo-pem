@@ -5,8 +5,8 @@
   
   <div class="container">
     <div class="navbar-brand brand">
-      <a class="d-inline-block" href="https://piwigo.org" target="_blank">
-        <img src="{$PEM_ROOT_URL_PLUGINS}images/porg.svg" alt="piwigo logo in orange and grey">
+      <a class="d-inline-block" href="{$PEM_ROOT_URL}">
+        <img src="{$PEM_ROOT_URL_PLUGINS}images/Logo_Piwigo_Extensions.svg" alt="piwigo extensions logo in orange and grey">
       </a>
     </div>
 
@@ -16,9 +16,6 @@
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item fw-bold" id="extensions-link">
-          <a class="nav-link" href="{$PEM_ROOT_URL}"><i class="icon-house"></i>{'Extensions'|translate}</a>
-        </li>
 {foreach from=$CATEGORIES_INFO item=category}
         <li class="nav-item active fw-bold">
           <a class="nav-link" href="{$PEM_ROOT_URL}index.php?cid={$category.cid}&page=1"><i class="{$category.icon_class}"></i>{$category.plural_name}</a>
