@@ -322,3 +322,4 @@ $lang['No links are available for this extension.'] = 'No hay enlaces disponible
 $lang['Piwigo team'] = 'Equipo de Piwigo';
 $lang['Read less'] = 'Leer menos';
 $lang['Read more ...'] = 'Leer más...';
+$lang['This action cannot be performed at this time. Please contact an admin.'] = 'Esta acción no puede llevarse a cabo en este momento. Por favor, póngase en contacto con un administrador.';
