@@ -28,14 +28,19 @@
   --light_red_font: #ff5252;
 
   /*colors for infos, errors, warnings and messages */
-  --message_green:#0a0;
-  --message_light_green:#c2f5c2;
-  --message_red:#f22;
-  --message_light_red:#ffd5dc;
-  --message_orange:#ee8800;
-  --message_light_orange:#ffdd99;
-  --message_blue:#00529b;
-  --message_light_blue:#bde5f8;
+  --message_green:#6DCE5E;
+  --message_light_green:#EEFFEB;
+  --message_dark_green:#254520;
+  --message_red:#EB3D33;
+  --message_light_red:#FFE7EB;
+  --message_dark_red:#502421;
+  --message_orange:#E18C32;
+  --message_light_orange:#FFF3DB;
+  --message_dark_orange:#563F26;
+  --message_blue:#4182BE;
+  --message_light_blue:#E3F5FF;
+  --message_dark_blue:#274159;
+
 
   --bs-body-font-size: 14px;
 }
@@ -126,11 +131,11 @@ h5{
 Colored fonts
 ******/
 .green-font{
-  color:var(--message_green);
+  color:var(--message_dark_green);
 }
 
 .red-font{
-  color:var(--message_red);
+  color:var(--message_dark_red);
 }
 
 .purple-font{
@@ -565,27 +570,39 @@ Messages
 }
 
 .infos {
-  color: var(--message_green);
-  background-color:#c2f5c2;
+  color: var(--message_dark_green);
+  background-color:var(--message_light_green);
   border-left:4px solid var(--message_green);
 }
 
+.infos i{
+  color:var(--message_green);
+}
+
 .errors {
-  color: var(--message_red);
+  color: var(--message_dark_red);
   background-color: var(--message_light_red);
   border-left: 4px solid var(--message_red);
 }
 
+.errors i{
+  color:var(--message_red);
+}
+
 .warnings {
-  color: #ee8800;
-  background-color:#ffdd99;
-  border-left:4px solid #ee8800;
+  color: var(--message_dark_orange);
+  background-color: var(--message_light_orange);
+  border-left: 4px solid var(--message_orange);
+}
+
+.warnings i{
+  color:var(--message_orange);
 }
 
 .messages {
-  color: #00529b;
-  background-color:#bde5f8;
-  border-left:4px solid #00529b;
+  color: var(--message_dark_blue);
+  background-color: var(--message_light_blue);
+  border-left: 4px solid var(--message_blue);
 }
 
 .infos .infos-content,
