@@ -48,6 +48,9 @@
 .icon-star-half:before { content: '\e831'; } /* '' */
 .icon-star-empty:before { content: '\e832'; } /* '' */
 .icon-piwigo:before { content: '\e843'; } /* '' */
+.icon-triangle-exclamation-solid-full:before { content: '\e84a'; } /* '' */
+.icon-circle-exclamation:before { content: '\e84b'; } /* '' */
+.icon-circle-check:before { content: '\e84c'; } /* '' */
 .icon-circle-notch-solid:before { content: '\e85e'; } /* '' */
 .icon-code-branch:before { content: '\e864'; } /* '' */
 .icon-arrow-right:before { content: '\e865'; } /* '' */
