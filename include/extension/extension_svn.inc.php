@@ -13,12 +13,7 @@ global $user, $logger;
 if (isset($_POST['pem_action']) and isset($_POST['submit']))
 {
 
-  if (is_a_guest())
-  {
-    $logger->info('is_guest on '.$_POST['pem_action'].' in FILE = '.__FILE__.', LINE = '.__LINE__);
-    set_status_header(489);
-    return;
-  }
+  check_status(ACCESS_CLASSIC);
 
   if (is_admin() or in_array($user['id'], $authors))
   {

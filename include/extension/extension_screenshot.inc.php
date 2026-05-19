@@ -120,12 +120,7 @@ function resize_picture(
 
 if (isset($_POST['pem_action']) and isset($_POST['submit']) and "edit_screenshot" == $_POST['pem_action'])
 {
-  if (is_a_guest())
-  {
-    $logger->info('is_guest on '.$_POST['pem_action'].' in FILE = '.__FILE__.', LINE = '.__LINE__);
-    set_status_header(489);
-    return;
-  }
+  check_status(ACCESS_CLASSIC);
 
   //Get list of extension authors
   $authors = get_extension_authors($current_extension_page_id);

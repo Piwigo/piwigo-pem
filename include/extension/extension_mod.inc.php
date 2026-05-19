@@ -39,13 +39,7 @@ if (isset($_POST['submit']) and !isset($_POST['pem_action']))
 
 if (empty($page['errors']) and isset($_POST['pem_action']) and isset($_POST['submit']))
 {
-  if (is_a_guest())
-  {
-    $logger->info('is_a_guest on '.$_POST['pem_action'].' in FILE = '.__FILE__.', LINE = '.__LINE__);
-    set_status_header(489);
-
-    return;
-  }
+  check_status(ACCESS_CLASSIC);
 
   // Form submitted for translator
   if ('edit_extension_translation' == $_POST['pem_action'] and isTranslator($user['id']))

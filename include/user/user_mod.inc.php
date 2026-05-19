@@ -14,12 +14,7 @@ $current_user_page_id = $_GET['uid'];
 if (isset($_POST['pem_action']) and isset($_POST['submit']) and "edit_user_info" == $_POST['pem_action'])
 {
 
-  if (is_a_guest())
-  {
-    $logger->info('is_guest on '.$_POST['pem_action'].' in FILE = '.__FILE__.', LINE = '.__LINE__);
-    set_status_header(489);
-    return;
-  }
+  check_status(ACCESS_CLASSIC);
   
   if (isset($user['id']) and $user['id'] == $current_user_page_id)
   {
