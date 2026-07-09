@@ -13,7 +13,7 @@
 
               {* Revision version*}
               <div class="mb-3 form-group">
-                <label for="revision_version" class="form-label w-100 ">{'Version'|translate}</label>
+                <label for="revision_version" class="form-label w-100 ">{'Version'|translate} <span class="red-font">*</span></label>
                 <input class="form-control" type="text" name="revision_version" size="10" maxlength="10" required autofocus/>
                 {if $is_in_embedded_ext_array}<p class="red-font"><small>{'Be careful when naming this revision, it is one of the extensions embedded in Piwigo'|translate}</small><p>{/if}
               </div>
@@ -23,8 +23,7 @@
               <div class="mb-3 form-group {if 8 == $extension_categories.id_category}d-none{/if}">
                 <label class="form-label w-100 ">{'File'|translate}</label>
                 <div>
-
-  {if in_array('upload', $upload_methods)}
+  {if in_array('upload', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
 
                   <div class="form-check d-inline-block">
                       <input class="form-check-input" type="radio" name="file_type" id="file_type_upload" value="upload" {if $FILE_TYPE=='upload' or 8 == $extension_categories.id_category}checked{/if}/>
@@ -49,7 +48,7 @@
                   <label class="form-check-label" for="file_type_git">{'Git'|translate}</label>
                 </div>
     {/if}
-    {if in_array('url', $upload_methods)}
+    {if in_array('url', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
                 <div class="form-check d-inline-block ms-3">
                     <input class="form-check-input" type="radio" name="file_type" id="file_type_url" value="url" {if $FILE_TYPE=='url'}checked{/if}/>
                     <label class="form-check-label" for="file_type_url">{'Download from URL'|translate}</label>
@@ -108,7 +107,7 @@
               {* Compatibility *}
               <div class="mb-3 form-group">
                 <div class="form-group">
-                  <label for="revision_compatible_versions" class=" pb-2">{'Compatibility'|translate}</label>
+                  <label for="revision_compatible_versions" class=" pb-2">{'Compatibility'|translate} <span class="red-font">*</span></label>
                   <select class="revision_compatible_versions" required data-selectize="authors"
                     data-create="true" name="compatible_versions[]" multiple="multiple" data-placeholder="{'Choose compatibility versions...'|translate}">
 {foreach from=$VERSIONS_PWG item=version}
@@ -130,7 +129,10 @@
                 </div>
 
                 <div class="pt-3">
+                  <label for="revision_descriptions" class=" pb-2">{'Description'|translate} <span class="red-font">*</span></label>
+
 {foreach from=$languages item=language}
+
                   <div id="desc_block_{$language.id}" class="desc" style="display: none;">
                     <input type="radio"  name="default_description" value="{$language.id}" {if $default_language == $language.code}checked{/if} hidden>
                     <textarea class="form-control" name="revision_descriptions[{$language.id}]" id="desc_{$language.id}" {if $language.code eq 'en_UK'} class="desc_{$language.code}" required{/if}></textarea>
