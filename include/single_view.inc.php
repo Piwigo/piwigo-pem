@@ -472,7 +472,7 @@ SELECT
     SELECT id_revision,
           version,
           r.description as default_description,
-          date,
+          FROM_UNIXTIME(date) AS date,
           url,
           author
       FROM '.PEM_REV_TABLE.' AS r
@@ -489,7 +489,7 @@ SELECT
         if (!isset($last_date_set))
         {
           $template->assign(array(
-            'last_date' => date('Y-m-d', $row['date']),
+            'last_date' => explode(' ', $row['date'])[0],
             'last_date_formatted_since' => time_since($row['date'], $stop='month'),
             'download_last_url' => PHPWG_ROOT_PATH.'download.php?rid='.$row['id_revision'],
             ));
