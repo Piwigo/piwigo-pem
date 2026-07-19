@@ -1342,7 +1342,7 @@ SELECT
         $svn_url = $row['svn_url'];
       }
 
-      if (!empty($row['git_url']) and preg_match('/github/', $row['git_url']))
+      if (!empty($row['git_url']))
       {
         $git_url = $row['git_url'];
       }
@@ -1356,15 +1356,29 @@ SELECT
 
     if (!empty($git_url))
     {
-      // from https://github.com/plegall/Piwigo-check_files_integrity
-      // to   https://api.github.com/repos/plegall/Piwigo-check_files_integrity/contents/language
-      $github_api_url = str_replace('//github.com', '//api.github.com/repos', str_replace('.git','', $git_url)).'/contents/language';
-
-      include_once(PHPWG_ROOT_PATH.'admin/include/functions.php');
-      fetchRemote($github_api_url, $result);
-      if(null != $result)
+      $temp_path = PHPWG_ROOT_PATH.'_data' . '/git_clone';
+      if (mkgetdir($temp_path, MKGETDIR_DEFAULT&~MKGETDIR_DIE_ON_ERROR))
       {
-        $language_candidates = array_column(json_decode($result, true), 'name');
+        $temp_path .= '/' . md5(uniqid(rand(), true));
+
+        $cmd = 'git clone -n --depth=1 --filter=tree:0 '.$git_url.' '.$temp_path;
+        $cmd.= ' && cd '.$temp_path;
+        $cmd.= ' && git sparse-checkout set --no-cone language';
+        $cmd.= ' && git checkout';
+        $cmd.= ' 2>&1';
+
+        exec($cmd, $out);
+
+        if ( ($glob = glob($temp_path.'/language/*_*')) !== false)
+        {
+          foreach ($glob as $file)
+          {
+            $language_candidates[] = basename($file);
+          }
+        }
+
+        include_once(PHPWG_ROOT_PATH.'admin/include/functions.php');
+        deltree($temp_path);
       }
     }
 
