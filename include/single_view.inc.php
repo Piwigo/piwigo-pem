@@ -871,6 +871,7 @@ SELECT
         id_version,
         version
       FROM '.PEM_VER_TABLE.'
+      WHERE state = \'stable\'
       ORDER BY id_version DESC
       LIMIT 1
     ;';

@@ -369,6 +369,7 @@ function ws_pem_extensions_get_list($params, &$service)
       id_version,
       version
     FROM '.PEM_VER_TABLE.'
+    WHERE state = \'stable\'
     ORDER BY id_version DESC
     LIMIT 1
   ;';
