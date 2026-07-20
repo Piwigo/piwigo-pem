@@ -22,7 +22,9 @@
               {* File *}
               <div class="mb-3 form-group {if 8 == $extension_categories.id_category}d-none{/if}">
                 <label class="form-label w-100 ">{'File'|translate} <span class="red-font">*</span></label>
-                {if !isset($SVN_URL) and !isset($GIT_URL)}<small class="red-font">Please configure either SVN or git to be able to publish a revision</small>{/if}
+  {if ('webmaster' != $USER_STATUS and 'admin' != $USER_STATUS) and (!isset($SVN_URL) and !isset($GIT_URL)) }
+                <small class="red-font">{'Please configure either SVN or git to be able to publish a revision'|translate}</small>
+  {/if}
                 <div>
   {if in_array('upload', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
 
