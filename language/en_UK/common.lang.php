@@ -329,4 +329,8 @@ $lang['Read more ...'] = 'Read more ...';
 $lang['Read less'] = 'Read less';
 $lang['No links are available for this extension.'] = 'No links are available for this extension.';
 $lang['This action cannot be performed at this time. Please contact an admin.'] = 'This action cannot be performed at this time. Please contact an admin.';
+$lang['Name language'] = 'Name language';
+$lang['Name'] = 'Name';
+$lang['Please configure either SVN or git to be able to publish a revision'] = 'Please configure either SVN or git to be able to publish a revision';
+
 //

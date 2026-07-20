@@ -22,7 +22,7 @@
                 </label>
               </div>
 
-              <div class="mb-3 form-check d-inline-block">
+              <div class="mb-3 ms-3 form-check d-inline-block">
                 <input class="form-check-input" type="radio" name="type" id="type_git" value="git" {if $TYPE == 'git'} checked="checked"{/if}>
                 <label class="form-check-label" for="type">
                   Git

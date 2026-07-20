@@ -21,11 +21,12 @@
 {if isset($file_needed)}
               {* File *}
               <div class="mb-3 form-group {if 8 == $extension_categories.id_category}d-none{/if}">
-                <label class="form-label w-100 ">{'File'|translate}</label>
+                <label class="form-label w-100 ">{'File'|translate} <span class="red-font">*</span></label>
+                {if !isset($SVN_URL) and !isset($GIT_URL)}<small class="red-font">Please configure either SVN or git to be able to publish a revision</small>{/if}
                 <div>
   {if in_array('upload', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
 
-                  <div class="form-check d-inline-block">
+                  <div class="form-check d-inline-block me-3">
                       <input class="form-check-input" type="radio" name="file_type" id="file_type_upload" value="upload" {if $FILE_TYPE=='upload' or 8 == $extension_categories.id_category}checked{/if}/>
                       <label class="form-check-label" for="file_type_upload">
                       {'Upload a file'|translate}</label>
@@ -33,7 +34,7 @@
   {/if}
   {if 8 != $extension_categories.id_category}
     {if in_array('svn', $upload_methods)}
-                  <div class="form-check d-inline-block ms-3">
+                  <div class="form-check d-inline-block">
                     <input class="form-check-input" type="radio" name="file_type" id="file_type_svn" value="svn" 
                   {if $FILE_TYPE=='svn'}checked{/if} 
                   {if !isset($SVN_URL)}disabled{/if}/>
