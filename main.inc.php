@@ -59,23 +59,23 @@ include_once(PEM_PATH . 'include/ws_functions.inc.php');
  * Use plugin tpl for identification, register, password
  * Use php provided by Piwigo
  */
-if (in_array(script_basename(), array('identification', 'register', 'password')))
-{
-  add_event_handler('init', 'replace_header_init');
-  function replace_header_init()
-  {
-    global $template;
-    $pem_root_url_pem = get_absolute_root_url() . 'plugins/piwigo_pem/';
+// if (in_array(script_basename(), array('identification', 'register', 'password')))
+// {
+//   add_event_handler('init', 'replace_header_init');
+//   function replace_header_init()
+//   {
+//     global $template;
+//     $pem_root_url_pem = get_absolute_root_url() . 'plugins/piwigo_pem/';
     
-    $template->assign(
-      array(
-        'PEM_ROOT_URL_PLUGINS' => $pem_root_url_pem,
-        'PEM_ROOT_URL' => get_absolute_root_url(),
-      )
-    );
-    $template->smarty->setTemplateDir(PEM_DIR.'template');
-  }
-}
+//     $template->assign(
+//       array(
+//         'PEM_ROOT_URL_PLUGINS' => $pem_root_url_pem,
+//         'PEM_ROOT_URL' => get_absolute_root_url(),
+//       )
+//     );
+//     $template->smarty->setTemplateDir(PEM_DIR.'template');
+//   }
+// }
 
 /**
  * plugin initialization
