@@ -23,20 +23,26 @@ if (php_sapi_name() != 'cli')
   die('this script must be run from cli');
 }
 
-define( 'INTERNAL', true );
-$root_path = dirname(dirname(__FILE__)).'/';
-$_SERVER['REQUEST_URI'] = '';
-require_once($root_path.'include/common.inc.php');
+$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+define ('PHPWG_ROOT_PATH', '../../../');
+include(PHPWG_ROOT_PATH.'include/common.inc.php');
+include(PHPWG_ROOT_PATH.'admin/include/functions.php');
 
 $opt = getopt('', array('dry-run'));
 
-$query = '
-SELECT
-    url,
-    project_id
-  FROM activity_timeline.project
-';
-$acts = query2array($query, 'url', 'project_id');
+$content = file_get_contents('https://piwigo.org/activity/api/projects.get.php');
+if ($content === false)
+{
+  die('problem fecthing projects from activity');
+}
+
+$acts = array();
+
+$activity_projects = json_decode($content, true);
+foreach ($activity_projects as $project)
+{
+  $acts[ $project['url'] ] = $project['project_id'];
+}
 
 // print_r($acts);
 
@@ -44,7 +50,7 @@ $acts = query2array($query, 'url', 'project_id');
 $query = '
 SELECT
     idx_extension
-  FROM '.REV_TABLE.'
+  FROM '.PEM_REV_TABLE.'
   WHERE date > UNIX_TIMESTAMP(subdate(now(), interval 1 year))
   GROUP BY idx_extension
   HAVING COUNT(*) > 1
@@ -56,7 +62,7 @@ SELECT
     name,
     svn_url,
     git_url
-  FROM '.EXT_TABLE.'
+  FROM '.PEM_EXT_TABLE.'
   WHERE id_extension IN ('.implode(',', $ext_ids).')
     AND (svn_url IS NOT NULL OR git_url IS NOT NULL)
 ';
@@ -67,11 +73,12 @@ foreach ($exts as $ext)
   $url = $ext['git_url'];
   if (isset($ext['svn_url']))
   {
-    if (preg_match('{^https://github.com/Piwigo/Piwigo/}', $ext['svn_url']))
-    {
-      continue;
-    }
     $url = $ext['svn_url'];
+  }
+
+  if (preg_match('{^https://github.com/Piwigo/Piwigo/}', $url))
+  { 
+    continue;
   }
 
   // remove trailing ".git"
@@ -79,17 +86,12 @@ foreach ($exts as $ext)
 
   if (!isset($acts[$url]))
   {
-    echo '['.$ext['name'].'] '.$url.' is not registered yet'."\n";
+    // echo '['.$ext['name'].'] '.$url.' is not registered yet'."\n";
 
     if (!isset($opt['dry-run']))
     {
-      $query = '
-INSERT
-  INTO activity_timeline.project
-  SET name = \''.$db->escape($ext['name']).'\',
-    url = \''.$url.'\'
-;';
-      $db->query($query);
+      $query = 'INSERT INTO project SET name = "'.$ext['name'].'", url = "'.$url.'";';
+      echo $query."\n";
     }
   }
 }
