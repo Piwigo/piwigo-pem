@@ -323,3 +323,5 @@ $lang['No links are available for this extension.'] = 'Não há links disponíve
 $lang['Create extension'] = 'Criar extensão';
 $lang['Add revision'] = 'Adicionar revisão';
 $lang['This action cannot be performed at this time. Please contact an admin.'] = 'Esta ação não pode ser realizada neste momento. Entre em contato com um administrador.';
+$lang['Name language'] = 'Nome do idioma';
+$lang['Please configure either SVN or git to be able to publish a revision'] = 'Configure o SVN ou o Git para poder publicar uma revisão.';
