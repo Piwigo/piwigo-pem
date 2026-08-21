@@ -326,3 +326,5 @@ $lang['Piwigo team'] = 'Piwigo团队';
 $lang['Read less'] = '收起';
 $lang['Read more ...'] = '展开更多...';
 $lang['This action cannot be performed at this time. Please contact an admin.'] = '当前无法执行此操作，请联系管理员。';
+$lang['Name language'] = '名称语言';
+$lang['Please configure either SVN or git to be able to publish a revision'] = '需要配置 SVN 或 Git，才可以发布版本修订。';
