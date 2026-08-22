@@ -233,6 +233,7 @@ function pem_load_footer(){
 
   $porg_root_url = get_absolute_root_url();
 
+  $template->set_filenames(array('footer_pem' => realpath(PEM_PATH . 'template/footer.tpl')));
   $template->assign(array(
     'CURRENT_YEAR' => date('Y'),
   ));
@@ -240,9 +241,9 @@ function pem_load_footer(){
   $template->parse('header_pem');
   $template->parse('navbar_pem');
   $template->parse('pem_page');
+  $template->parse('footer_pem');
   $template->p();
 
-  include_once(PEM_PATH . 'include/footer.inc.php');
   exit();
 
 }
