@@ -7,6 +7,7 @@
 
   background-color: var(--md-default-fg-color--lightest);
   color: #3C3C3Cde;
+  margin-top:40px;
 }
 
 .md-footer a {
