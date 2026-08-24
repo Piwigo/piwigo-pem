@@ -323,3 +323,5 @@ $lang['Piwigo team'] = 'Equipo de Piwigo';
 $lang['Read less'] = 'Leer menos';
 $lang['Read more ...'] = 'Leer más...';
 $lang['This action cannot be performed at this time. Please contact an admin.'] = 'Esta acción no puede llevarse a cabo en este momento. Por favor, póngase en contacto con un administrador.';
+$lang['Name language'] = 'Idioma del nombre';
+$lang['Please configure either SVN or git to be able to publish a revision'] = 'Configure SVN o git para poder publicar una revisión';
