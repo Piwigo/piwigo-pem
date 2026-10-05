@@ -22,11 +22,11 @@
               {* File *}
               <div class="mb-3 form-group {if 8 == $extension_categories.id_category}d-none{/if}">
                 <label class="form-label w-100 ">{'File'|translate} <span class="red-font">*</span></label>
-  {if ('webmaster' != $USER_STATUS and 'admin' != $USER_STATUS) and (!isset($SVN_URL) and !isset($GIT_URL)) }
+  {if !isset($SVN_URL) and !isset($GIT_URL)}
                 <small class="red-font">{'Please configure either SVN or git to be able to publish a revision'|translate}</small>
   {/if}
                 <div>
-  {if in_array('upload', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
+  {if in_array('upload', $upload_methods)}
 
                   <div class="form-check d-inline-block me-3">
                       <input class="form-check-input" type="radio" name="file_type" id="file_type_upload" value="upload" {if $FILE_TYPE=='upload' or 8 == $extension_categories.id_category}checked{/if}/>
@@ -51,7 +51,7 @@
                   <label class="form-check-label" for="file_type_git">{'Git'|translate}</label>
                 </div>
     {/if}
-    {if in_array('url', $upload_methods) and ( $USER_STATUS == 'webmaster' or $USER_STATUS == 'admin')}
+    {if in_array('url', $upload_methods)}
                 <div class="form-check d-inline-block ms-3">
                     <input class="form-check-input" type="radio" name="file_type" id="file_type_url" value="url" {if $FILE_TYPE=='url'}checked{/if}/>
                     <label class="form-check-label" for="file_type_url">{'Download from URL'|translate}</label>
