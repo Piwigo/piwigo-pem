@@ -331,3 +331,5 @@ $lang['Piwigo team'] = 'Piwigo-holdet';
 $lang['Create extension'] = 'Opret udvidelse';
 $lang['Add revision'] = 'Tilføj revision';
 $lang['This action cannot be performed at this time. Please contact an admin.'] = 'Denne handling kan ikke udføres på nuværende tidspunkt. Kontakt en administrator.';
+$lang['Name language'] = 'Navngiv sprog';
+$lang['Please configure either SVN or git to be able to publish a revision'] = 'Opsæt enten SVN eller git, for at kunne offentliggøre en revision';
