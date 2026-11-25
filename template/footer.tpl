@@ -56,7 +56,7 @@
   <div class="md-footer-inner container">
     <div class="row">
       <div class="md-copyright col-md-6">
-        <a href= "/">Piwigo.org</a> &copy; 2002-{$CURRENT_YEAR} <span class="pwg_custom_copyright_middledot">·</span> <a href="/contact">Get help</a>
+        <a href= "/">Piwigo.org</a> &copy; 2002-{$CURRENT_YEAR} <span class="pwg_custom_copyright_middledot">·</span> <a href="/contact">Get help</a> <span class="pwg_custom_copyright_middledot">·</span> <a href="https://github.com/Piwigo/Piwigo/wiki/Publishing-an-extension" target="_blank">Publishing an extension</a>
       </div>
 
       <div class="md-social col-md-6">
